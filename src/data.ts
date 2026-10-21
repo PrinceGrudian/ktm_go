@@ -4,11 +4,11 @@ export const PHONE = '916383323659';
 export const DISPLAY_PHONE = '+91 63833 23659';
 export const INSTAGRAM = 'https://www.instagram.com/ktmgo.carrentals/';
 export const cars = [
-  { name: 'Maruti Suzuki Dzire', category: 'Sedan', seats: 'Confirm with team', fuel: 'CNG only', image: 'photo-1549317661-bd32c8ce0db2', alt: 'White compact sedan on a road' },
-  { name: 'Maruti Suzuki Ertiga', category: 'MPV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1568844293986-8d0400c7f3b7', alt: 'White family MPV parked outdoors' },
-  { name: 'Mahindra Xylo', category: 'MPV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1519641471654-76ce0107ad1b', alt: 'White multi-purpose vehicle' },
-  { name: 'Maruti Suzuki Brezza', category: 'SUV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1519641471654-76ce0107ad1b', alt: 'White compact SUV' },
-  { name: 'Maruti Suzuki Baleno', category: 'Hatchback', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1503376780353-7e6692767b70', alt: 'White hatchback car' },
+  { name: 'Maruti Suzuki Dzire', category: 'Sedan', seats: '5 ', fuel: 'CNG and Petrol', image: 'https://www.suzukiauto.co.za/hubfs/Dzire%20-%20Arctic%20White%20Pearl.png', alt: 'White compact sedan on a road' },
+  { name: 'Maruti Suzuki Ertiga', category: 'MPV', seats: '7 ', fuel: 'Petrol', image: 'blob:https://chatgpt.com/0a533814-cf81-4325-9c14-933ab9262444', alt: 'White family MPV parked outdoors' },
+  { name: 'Mahindra Xylo', category: 'MPV', seats: '7 ', fuel: 'Diesel', image: 'blob:https://chatgpt.com/04007a7b-c0ad-4894-ac82-0783fb8a4434', alt: 'White multi-purpose vehicle' },
+  { name: 'Maruti Suzuki Brezza', category: 'SUV', seats: '5 ', fuel: 'Petrol', image: 'blob:https://chatgpt.com/6711354b-f1d2-49f1-9137-b175f27482c5', alt: 'White compact SUV' },
+  { name: 'Maruti Suzuki Baleno', category: 'Hatchback', seats: '5 ', fuel: 'Petrol', image: 'blob:https://chatgpt.com/3d454520-f8e5-4caf-ae9c-74d8d8a398a5', alt: 'White hatchback car' },
 ];
 export const services = [
   { title: 'Self-Drive Rentals', icon: SteeringWheel, text: 'Drive on your own terms. Ask us about self-drive options for your trip.' },

@@ -5,9 +5,9 @@ export const DISPLAY_PHONE = '+91 63833 23659';
 export const INSTAGRAM = 'https://www.instagram.com/ktmgo.carrentals/';
 export const cars = [
   { name: 'Maruti Suzuki Dzire', category: 'Sedan', seats: 'Confirm with team', fuel: 'CNG only', image: 'https://www.suzukiauto.co.za/hubfs/Dzire%20-%20Arctic%20White%20Pearl.png', alt: 'White compact sedan on a road' },
-  { name: 'Maruti Suzuki Ertiga', category: 'MPV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1568844293986-8d0400c7f3b7', alt: 'White family MPV parked outdoors' },
+  { name: 'Maruti Suzuki Ertiga', category: 'MPV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1492144534655-ae79c964c9d7', alt: 'White family MPV parked outdoors' },
   { name: 'Mahindra Xylo', category: 'MPV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1519641471654-76ce0107ad1b', alt: 'White multi-purpose vehicle' },
-  { name: 'Maruti Suzuki Brezza', category: 'SUV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1519641471654-76ce0107ad1b', alt: 'White compact SUV' },
+  { name: 'Maruti Suzuki Brezza', category: 'SUV', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1549317661-bd32c8ce0db2', alt: 'White compact SUV' },
   { name: 'Maruti Suzuki Baleno', category: 'Hatchback', seats: 'Confirm with team', fuel: 'Confirm with team', image: 'photo-1503376780353-7e6692767b70', alt: 'White hatchback car' },
 ];
 export const services = [

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Component, useEffect, useState, type ErrorInfo, type ReactNode } from 'react';
 import { PHONE, DISPLAY_PHONE, INSTAGRAM, cars, services } from './data';
 import { LuArrowRight as ArrowRight, LuMenu as Menu, LuX as X, LuCarFront as CarFront, LuShieldCheck as ShieldCheck, LuMapPin as MapPin, LuHeadphones as Headphones, LuUsers as Users, LuFuel as Fuel, LuArmchair as Armchair, LuPhone as Phone, LuInstagram as Instagram, LuMessageCircle as MessageCircle, LuCalendarDays as CalendarDays, LuCheck as Check, LuSparkles as Sparkles, LuRoute as Route } from 'react-icons/lu';
 
@@ -48,5 +48,27 @@ function Contact() {return <main className="inner-page"><PageIntro eyebrow="GET 
 function ServicesPage() {return <main className="inner-page"><PageIntro eyebrow="TRAVEL OPTIONS" title="Our Services">Explore the rental options available for your journey and contact us to discuss the details.</PageIntro><Services/><div className="page-cta"><h2>Ready to plan a trip?</h2><p>Share your travel details and we'll get back to you about the options.</p><a className="button button-gold" href={page('/book-a-car')}>Send an enquiry <ArrowRight size={16}/></a></div></main>}
 function DocumentPage({terms}: {terms:boolean}) {return <main className="inner-page document-page"><PageIntro eyebrow="KTM GO CAR RENTALS" title={terms?'Rental Terms and Conditions':'Privacy Policy'}>{terms?'Please discuss the terms for your specific rental with KTM GO before confirming a booking.':'This website provides an enquiry channel. Here is how information submitted through it is handled.'}</PageIntro>{terms?<article className="document-copy"><h2>Enquiries and confirmation</h2><p>Sending an enquiry through this website opens WhatsApp with the trip details you entered. An enquiry is not a confirmed reservation. KTM GO will confirm availability and booking details with you directly.</p><h2>Vehicle and trip details</h2><p>Vehicle configurations, rental arrangements and trip requirements should be confirmed with KTM GO before a booking is accepted.</p><h2>Rental specific terms</h2><p>Please request and review the applicable rental terms for your selected vehicle and trip directly with KTM GO before confirming your reservation.</p></article>:<article className="document-copy"><h2>Information you provide</h2><p>The enquiry form uses the details you enter to prepare a WhatsApp message addressed to KTM GO. The website does not submit that form to a server or store its contents.</p><h2>WhatsApp and external links</h2><p>When you choose to open WhatsApp, the information in your enquiry is handled by WhatsApp under its own privacy terms. External services, including Instagram, have their own privacy practices.</p><h2>Contact</h2><p>To ask about an enquiry or its details, contact KTM GO at <a href={`tel:+${PHONE}`}>{DISPLAY_PHONE}</a>.</p></article>}</main>}
 function BookingPage() {return <main className="inner-page booking-page"><PageIntro eyebrow="YOUR NEXT JOURNEY" title="Book a Car">Tell us about your trip. We'll confirm availability and booking details with you.</PageIntro><BookingForm/></main>}
+class AppErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
+  state: { error: Error | null } = { error: null };
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    console.error('KTM GO failed while rendering:', error, info.componentStack);
+  }
+
+  render() {
+    if (this.state.error) {
+      return <main role="alert" style={{ minHeight: '60vh', padding: '4rem 6%', color: '#f6f6f6', background: '#101010', fontFamily: 'sans-serif' }}>
+        <h1 style={{ color: '#f2c34c' }}>KTM GO could not load this page</h1>
+        <p>A rendering error occurred. Reload the page; if it continues, share this error with the site maintainer.</p>
+        <pre style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: '#ddd' }}>{this.state.error.message}</pre>
+      </main>;
+    }
+    return this.props.children;
+  }
+}
 function App() { const basePath = import.meta.env.BASE_URL; const pathname = window.location.pathname; const path = (pathname.startsWith(basePath) ? `/${pathname.slice(basePath.length)}` : pathname).replace(/\/$/,'') || '/'; let page; if(path==='/our-cars') page=<main><div className="inner-page"><PageIntro eyebrow="THE FLEET" title="Our Cars">Explore the vehicles available for enquiry. Confirm the specific vehicle configuration with our team.</PageIntro></div><Fleet all/></main>; else if(path==='/services') page=<ServicesPage/>; else if(path==='/about-us') page=<About/>; else if(path==='/contact') page=<Contact/>; else if(path==='/book-a-car') page=<BookingPage/>; else if(path==='/rental-terms') page=<DocumentPage terms/>; else if(path==='/privacy-policy') page=<DocumentPage terms={false}/>; else page=<Home/>; useEffect(()=>{ const titles:Record<string,string>={'/our-cars':'Our Cars','/services':'Services','/about-us':'About Us','/contact':'Contact Us','/book-a-car':'Book a Car','/rental-terms':'Rental Terms and Conditions','/privacy-policy':'Privacy Policy'};document.title=`${titles[path]||'Travel Your Way'} | KTM GO Car Rentals`; },[path]); return <><Header/>{page}<Footer/><WhatsAppFloat/></>; }
-export default App;
+export default function AppWithErrorBoundary() { return <AppErrorBoundary><App/></AppErrorBoundary>; }
